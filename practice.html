@@ -4,31 +4,92 @@
 <en>authors/credits</en>
 <br><strong> me #Judson</strong></br>
 <br><!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script>
-    function renderHTML() {
-      const htmlCode = document.getElementById("htmlBox").value;
-      document.getElementById("viewer").srcdoc = htmlCode;
+  <style>
+    body {
+      margin: 0;
+      background: #101010;
+      color: #eee;
+      font-family: monospace;
     }
-
-    function visitSite() {
-      const url = document.getElementById("urlBox").value;
-      document.getElementById("viewer").src = url;
+    header {
+      background: #222;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-  </script>
+    .logo {
+      font-weight: bold;
+      color: #ff55a5;
+    }
+    nav button {
+      background: #333;
+      border: none;
+      color: #eee;
+      margin-left: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      gap: 20px;
+      justify-content: center;
+    }
+    .video-card {
+      background: #181818;
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #333;
+    }
+    .video-card video {
+      width: 100%;
+      height: auto;
+      margin-bottom: 8px;
+    }
+    footer {
+      background: #222;
+      text-align: center;
+      padding: 8px;
+      font-size: 12px;
+    }
+  </style>
 </head>
-<body style="margin:0; background:#111; color:#eee; font-family:monospace;">
-  <textarea id="htmlBox" placeholder="Type HTML here..." 
-    style="width:100%; height:150px; background:#222; color:#eee; border:none; padding:10px;"></textarea>
-  <button onclick="renderHTML()" style="padding:6px 12px;">Run Code</button>
+<body>
 
-  <input id="urlBox" type="text" placeholder="Enter website URL (https://...)" 
-    style="width:80%; margin-top:20px; padding:8px; background:#222; color:#eee; border:none;">
-  <button onclick="visitSite()" style="padding:6px 12px;">Browse Site</button>
+  <header>
+    <div class="logo">CreateTube</div>
+    <nav>
+      <button onclick="filter('all')">All</button>
+      <button onclick="filter('shorts')">Shorts</button>
+      <button onclick="filter('longform')">Videos</button>
+    </nav>
+  </header>
 
-  <iframe id="viewer" style="width:100%; height:400px; border:none; margin-top:20px;"></iframe>
-</body>
-</html>
+  <div class="grid" id="videoGrid">
+    <!-- Video Cards -->
+    <div class="video-card" data-type="longform">
+      <video src="videos/coding_hack.mp4" controls></video>
+      <div>Coding Hacks & Setup Tips</div>
+    </div>
+    <div class="video-card" data-type="shorts">
+      <video src="videos/femboy_glitch_intro.mp4" controls></video>
+      <div>Femboy Glitch — Intro Edit</div>
+    </div>
+    <div class="video-card" data-type="longform">
+      <video src="videos/how_to_mod_eaglercraft.mp4" controls></video>
+      <div>How to Mod Eaglercraft</div>
+    </div>
+    <div class="video-card" data-type="shorts">
+      <video src="videos/minecraft_skin_spin.mp4" controls></video>
+      <div>Gayest Boy Skin Showcase</div>
+    </div>
+  </div>
+
+  <footer>
+
 </br>
