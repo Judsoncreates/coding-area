@@ -2,94 +2,93 @@
 <h1>The Creates Coding Zone</h1>
 <h>this is where i will start coding and try to let you guys code</h>
 <en>authors/credits</en>
-<br><strong> me #Judson</strong></br>
 <br><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>CreateShell</title>
   <style>
     body {
       margin: 0;
-      background: #101010;
-      color: #eee;
+      background: #0d0d0d;
       font-family: monospace;
+      color: #eee;
+      overflow: hidden;
     }
-    header {
-      background: #222;
-      padding: 10px;
+    .taskbar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #191919;
+      padding: 8px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap: 10px;
     }
-    .logo {
+    .app-window {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      width: 600px;
+      height: 400px;
+      background: #121212;
+      border: 1px solid #333;
+      display: none;
+      flex-direction: column;
+    }
+    .title-bar {
+      background: #222;
+      padding: 6px;
       font-weight: bold;
+      cursor: move;
       color: #ff55a5;
     }
-    nav button {
+    .app-content {
+      flex: 1;
+      padding: 10px;
+      overflow: auto;
+    }
+    button {
       background: #333;
-      border: none;
       color: #eee;
-      margin-left: 10px;
-      padding: 8px 12px;
+      border: none;
+      padding: 6px 12px;
       cursor: pointer;
-    }
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 10px;
-      gap: 20px;
-      justify-content: center;
-    }
-    .video-card {
-      background: #181818;
-      padding: 10px;
-      width: 300px;
-      border: 1px solid #333;
-    }
-    .video-card video {
-      width: 100%;
-      height: auto;
-      margin-bottom: 8px;
-    }
-    footer {
-      background: #222;
-      text-align: center;
-      padding: 8px;
-      font-size: 12px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">CreateTube</div>
-    <nav>
-      <button onclick="filter('all')">All</button>
-      <button onclick="filter('shorts')">Shorts</button>
-      <button onclick="filter('longform')">Videos</button>
-    </nav>
-  </header>
-
-  <div class="grid" id="videoGrid">
-    <!-- Video Cards -->
-    <div class="video-card" data-type="longform">
-      <video src="videos/coding_hack.mp4" controls></video>
-      <div>Coding Hacks & Setup Tips</div>
-    </div>
-    <div class="video-card" data-type="shorts">
-      <video src="videos/femboy_glitch_intro.mp4" controls></video>
-      <div>Femboy Glitch — Intro Edit</div>
-    </div>
-    <div class="video-card" data-type="longform">
-      <video src="videos/how_to_mod_eaglercraft.mp4" controls></video>
-      <div>How to Mod Eaglercraft</div>
-    </div>
-    <div class="video-card" data-type="shorts">
-      <video src="videos/minecraft_skin_spin.mp4" controls></video>
-      <div>Gayest Boy Skin Showcase</div>
+  <!-- App Windows -->
+  <div class="app-window" id="editorApp">
+    <div class="title-bar">Text Editor</div>
+    <div class="app-content">
+      <textarea style="width:100%;height:100%;background:#0d0d0d;color:#fff;border:none;">
+        // Write your code here...
+      </textarea>
     </div>
   </div>
 
-  <footer>
+  <div class="app-window" id="chatApp">
+    <div class="title-bar">Local Chat</div>
+    <div class="app-content">
+      <p>No server. Just you and me.</p>
+    </div>
+  </div>
+
+  <!-- Taskbar -->
+  <div class="taskbar">
+    <button onclick="launch('editorApp')">Text Editor</button>
+    <button onclick="launch('chatApp')">Chat</button>
+  </div>
+
+  <script>
+    function launch(id) {
+      const win = document.getElementById(id);
+      win.style.display = 'flex';
+    }
+  </script>
+
+</body>
+</html>
 
 </br>
